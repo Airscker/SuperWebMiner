@@ -1,0 +1,7 @@
+requests
+urllib3
+selenium
+re
+lxml
+bs4
+json
