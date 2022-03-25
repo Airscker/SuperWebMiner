@@ -35,7 +35,8 @@ class SuperMiner():
     engine=0#enigine as a member of class,prepared for any operation using engine out of the class area
     def __init__(self,
                  browser='chrome',
-                 headless=False,url='https://www.bing.com',
+                 headless=False,
+                 url='https://www.bing.com',
                  Id='None',
                  Name='None',
                  Class='None',
@@ -311,7 +312,7 @@ def Download(url_list,data_type='text'):
             pass
     if data_type=='text':
         for i in range(len(url_list)):            
-            with open('downloads/'+'text'+str(i)+'.txt','w') as fp:
+            with open('downloads/'+'text'+str(time.time())+'.txt','w') as fp:
                 try:                    
                     fp.write(requests.get(url_list[i]).text)
                     print('\nDownloading from:'+url_list[i])
@@ -320,7 +321,7 @@ def Download(url_list,data_type='text'):
     elif data_type=='img':
         for i in range(len(url_list)):
             
-            with open('downloads/'+'img'+str(i)+'.jpg','wb') as fp:                
+            with open('downloads/'+'img'+str(time.time())+'.jpg','wb') as fp:                
                 try:                    
                     fp.write(requests.get(url_list[i]).content)
                     print('\nDownloading from:'+url_list[i])
