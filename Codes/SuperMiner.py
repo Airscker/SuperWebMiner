@@ -36,15 +36,7 @@ class SuperMiner():
     def __init__(self,
                  browser='chrome',
                  headless=False,
-                 url='https://www.bing.com',
-                 Id='None',
-                 Name='None',
-                 Class='None',
-                 Link='None',
-                 Partial_link='None',
-                 Tag='None',
-                 Xpath='None',
-                 CSS='None'):
+                 url='https://www.bing.com'):
         '''
         Parameters:
             browser:chrome
@@ -53,8 +45,6 @@ class SuperMiner():
                 Hide or display browser GUI,False defaultly.
             url:Any url you want to mine,https://www.bing.com defaultly.
 
-            Id,Name,Class,Link,Partial_link,Tag,Xpath,CSS:Only one element need to be given,if more than one specified, only find the first element. 
-                All elements are 'None' defaultly.
             content:If your object found is search box, you can set content as input.
         
         Functions:
@@ -67,9 +57,7 @@ class SuperMiner():
         self.browser=browser
         self.headless=headless
         self.url=url
-        self.obj={'Oid':Id,'Oname':Name,'Oclass':Class,'Olink':Link,'Oplink':Partial_link,'Otag':Tag,'Oxpath':Xpath,'Ocss':CSS}
-
-
+        
     def MineEngine(self):
         '''
         Return value:
@@ -107,17 +95,30 @@ class SuperMiner():
             return -1
         print("\nEngine initialized")
         return 0
-    def Objects(self):
+    def Objects(self,
+                Id='None',
+                Name='None',
+                Class='None',
+                Link='None',
+                Partial_link='None',
+                Tag='None',
+                Xpath='None',
+                CSS='None'):
         '''
         Get the objects to be found
+
+        Id,Name,Class,Link,Partial_link,Tag,Xpath,CSS:
+            Only one element need to be given,if more than one specified, only find the first element. 
+            All elements are 'None' defaultly.
         
         return:the list of the objects found
         '''
+        obj={'Oid':Id,'Oname':Name,'Oclass':Class,'Olink':Link,'Oplink':Partial_link,'Otag':Tag,'Oxpath':Xpath,'Ocss':CSS}
         Obj='None'
         Obj_name='None'
-        for ele in self.obj.keys():
-            if self.obj[ele]!='None':
-                Obj=self.obj[ele]
+        for ele in obj.keys():
+            if obj[ele]!='None':
+                Obj=obj[ele]
                 Obj_name=ele
                 break
 
@@ -154,7 +155,7 @@ class SuperMiner():
         #exit engine
         #os.system('pause')
         #SuperMiner.engine.quit()
-        print('\nObjects found')
+        print('\n'+str(len(Obj_list))+' Objects found')
         return Obj_list
 
 def Attributes(Attribute,Obj_list): 
