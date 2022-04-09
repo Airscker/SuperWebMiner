@@ -5,3 +5,5 @@ re
 lxml
 bs4
 json
+click
+setuptools
