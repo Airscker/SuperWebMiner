@@ -6,9 +6,9 @@ This a project built for the SuperWebMiner, which is also a homework of my class
 - [Release Notes](https://airscker.github.io/SuperWebMiner/Release%20Notes.html)
 # Copyright
 * Author: Airscker
-* Last Released Time: 2022-3
-* Latest Edition: R22.1.0.0
-* Open source project. Copyright (C) Airscker, airscker@gmail.com
+* Last Released Time: 2022-4
+* Latest Edition: R22.2.0.0
+* Open source project. Copyright (C) Airscker, airscker@gmail.com, Mozilla Public License Version 2.0
 # Basic steps
 Here we give you all the steps and references for build your first engine
 ### Preparations
