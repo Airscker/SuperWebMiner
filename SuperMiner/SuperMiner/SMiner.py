@@ -201,7 +201,7 @@ def Property(Obj_list):
 def Basic_Actions(engine,
                   Obj_list=[],
                   Obj_index=-1,
-                  send_keys=True,
+                  send_keys=False,
                   click=False,
                   clear=False,
                   submit=False,
@@ -259,7 +259,7 @@ def Basic_Actions(engine,
                     ActionChains(engine).context_click(Obj_list[i]).perform()
                 if double_click==True:
                     ActionChains(engine).double_click(Obj_list[i]).perform()                
-                engine.implicitly_wait(10)
+                engine.implicitly_wait(100)
         except:
             print('send_keys error! ErrorCode:E_SenK001')
             return -1
@@ -278,7 +278,7 @@ def Basic_Actions(engine,
             if double_click==True:
                 ActionChains(engine).double_click(Obj_list[Obj_index]).perform()
             #if drag_drop==True:
-            engine.implicitly_wait(10)
+            engine.implicitly_wait(100)
         except:
             print('send_keys error! ErrorCode:E_SenK002')
             return -1
@@ -293,7 +293,7 @@ def Basic_Actions(engine,
                 time.sleep(time_sleep)
     return 0
 
-def Download(engine,url_list,data_type='page',file_type='.html',encode='utf-8',web_name=True,web_name_index=-1):
+def Download(engine,url_list,data_type='page',file_type='.html',encode='utf-8',folder_name='downloads',web_name=True,web_name_index=-1):
     '''
     parameters:
         engine:the miner engine
@@ -304,6 +304,8 @@ def Download(engine,url_list,data_type='page',file_type='.html',encode='utf-8',w
             page(get the whole page)
         file_type:the type of the file saving data
         encode:encoding format of non-img files
+        file_name:specify the file name as you want
+        folder_name:the file folder you want to save your files downloaded
         web_name:whether to name the file as the link of web, True defaultly
         wen_name_index:the index of  / in site link, the name is choosed from this / to the end of web link
 
@@ -316,9 +318,9 @@ def Download(engine,url_list,data_type='page',file_type='.html',encode='utf-8',w
     '''
     download_file=0
     file_name=0
-    if not os.path.exists(os.getcwd()[:-4]+'downloads'):
+    if not os.path.exists(os.getcwd()[:-4]+folder_name):
         try:
-            os.makedirs('./downloads')
+            os.makedirs('./'+folder_name)
         except:
             pass
     if data_type=='text':
@@ -328,7 +330,7 @@ def Download(engine,url_list,data_type='page',file_type='.html',encode='utf-8',w
                 file_name=url_list[i].split('/')[web_name_index]
             else:
                 file_name='text'+str(time.time())
-            with open('downloads/'+file_name+file_type,'w',encoding='utf-8') as fp:
+            with open(folder_name+'/'+file_name+file_type,'w',encoding='utf-8') as fp:
                 #print('\nDownloading from:'+url_list[i])
                 #download_file+=1
                 #text=requests.get(url_list[i])
@@ -352,7 +354,7 @@ def Download(engine,url_list,data_type='page',file_type='.html',encode='utf-8',w
                 file_name=url_list[i].split('/')[web_name_index]
             else:
                 file_name=str(time.time())
-            with open('downloads/'+'img'+file_name+file_type,'wb') as fp:                
+            with open(folder_name+'/'+'img'+file_name+file_type,'wb') as fp:                
                 try:                    
                     print('\nDownloading from:'+url_list[i])
                     download_file+=1
@@ -366,9 +368,18 @@ def Download(engine,url_list,data_type='page',file_type='.html',encode='utf-8',w
         for i in range(len(url_list)):
             if web_name==True:
                 file_name=url_list[i].split('/')[web_name_index]
+                file_name=file_name.replace('?','.')
+                file_name=file_name.replace('>','.')
+                file_name=file_name.replace('<','.')
+                file_name=file_name.replace(':','.')
+                file_name=file_name.replace('|','.')
+                file_name=file_name.replace('/','.')
+                file_name=file_name.replace('"','.')
+                file_name=file_name.replace('*','.')
+                file_name=file_name.replace('\\','.')
             else:
-                file_name='text'+str(time.time())
-            with open('downloads/'+file_name+file_type,'w',encoding='utf-8') as fp:
+                file_name='page'+str(time.time())
+            with open(folder_name+'/'+file_name+file_type,'w',encoding='utf-8') as fp:
                 print('\nDownloading from:'+url_list[i])
                 engine.get(url_list[i])
                 engine.implicitly_wait(30)
