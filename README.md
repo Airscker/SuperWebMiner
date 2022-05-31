@@ -7,25 +7,25 @@ This a project built for the SuperWebMiner, which is also a homework of my class
 - [Release Notes](https://airscker.github.io/SuperWebMiner/Release%20Notes.html)
 # Copyright
 * Author: Airscker
-* Last Released Time: 2022-4
-* Latest Edition: R22.3.1.1
+* Last Edited Time: 2022-5
+* Latest Edition: 22.3.1.1
 * Open source project. Copyright (C) Airscker, airscker@gmail.com, Mozilla Public License Version 2.0
 # Basic steps of coding on IDE
 Here we give you all the steps and references for build your first engine
 ### Preparations
 - For Python
 
-  Before you import code into our project, you need to download the .whl file and then unfold it, enter the file folder 'Codes' and open command shell here, then type in the command below and enter:
+  Before you import code into our project, you need to download the .whl file, enter the root path of downloaded file and open command shell here, then type in the command below and enter:
 ```python
 pip install SuperMiner-22.3.1.1-py3-none-any.whl
 ```
 - For Browser
 	- Now you need to install Chrome browser(this project only support chrome currently).
-	- Secondly get your chrome's edtion number in Settings.
+	- Secondly get your chrome's edtion number in Settings(tab 'About Chrome', such as 100.0.4896.88).
 	- Then download chrome driver according to your edition number [here](http://chromedriver.storage.googleapis.com/index.html).
-	- Move the webdriver.exe into the Scripts root path of python, such as: C:\Python\Python39\Scripts
+	- Move the webdriver.exe into the Scripts root path of python, such as: C:\Python\Python39\Scripts\
 ### Import
-wait until all download threads executed,copy the file 'SuperMiner.py' and put it in the root of your project, then open your project, type in:
+wait until all download threads executed, then open your project, type in:
 ```python
 from SuperMiner import SMiner as SM
 ```
@@ -37,11 +37,11 @@ Hello_engine=SM.SuperMiner(url='https://cn.bing.com/images/search?q=Hello+world'
 ```
 - Start miner engine
 ```python
-Hello_engine=SM.MineEngine()
+Hello_engine.MineEngine()
 ```
 - Scroll the page to get more images
 ```python
-SM.Basic_Actions(engine=Hello_enigine,Obj_index=-2,Send_keys=False,rollpage=True)
+SM.Basic_Actions(engine=Hello_engine.engine,Obj_index=-2,send_keys=False,rollpage=True)
 ```
 - Get the attributes of the images
 ```python
