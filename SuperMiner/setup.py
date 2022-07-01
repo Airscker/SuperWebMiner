@@ -15,7 +15,7 @@ here = pathlib.Path(__file__).parent.resolve()
 long_description = (here / "README.md").read_text(encoding="utf-8")
 setup(
     name="SuperMiner",
-    version="22.3.1.1",
+    version="22.3.1.2",
     description="Web miner built based on selenium but more simple operations",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -25,7 +25,7 @@ setup(
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
-        "License :: OSI Approved :: Mozilla Public License Version 2.0",        
+        # "License :: OSI Approved :: Mozilla Public License Version 2.0",        
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
